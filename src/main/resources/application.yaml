@@ -1,0 +1,21 @@
+server:
+  port: ${PORT:8080}
+  hostname: localhost
+app:
+  feign:
+    config:
+      gif:
+        name: apiGifs
+        url: https://api.giphy.com/v1/gifs/random
+        api_key: 2vIu7APaVTnU27fS6S4cFJdf3NS1sQyf
+        tag_rich: rich
+        tag_broke: broke
+      currency:
+        app_id: ef519a34e73444b9a57742731f6e6c89
+        base_currency: USD
+        name: apiCurrencies
+        url: https://openexchangerates.org/api/
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
