@@ -42,7 +42,6 @@ public class MyServiceImpl implements MyService {
         return getUrlGifByDifRates(rateYesterday, rateToday);
     }
 
-
     @Override
     public String getUrlGifByDifRates(RateDto rateYesterday, RateDto rateToday) {
         log.info("Request gif by rateYesterday and rateToday");

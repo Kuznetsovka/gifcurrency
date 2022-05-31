@@ -1,4 +1,4 @@
-package ru.kuznetsovka.gifcurrency.api;
+package ru.kuznetsovka.gifcurrency.config;
 
 import feign.codec.ErrorDecoder;
 import org.springframework.context.annotation.Bean;

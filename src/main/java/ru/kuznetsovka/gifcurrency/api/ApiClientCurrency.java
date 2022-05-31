@@ -5,6 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.kuznetsovka.gifcurrency.config.ClientConfiguration;
 import ru.kuznetsovka.gifcurrency.dto.rate.RateDtoWrapper;
 
 import javax.ws.rs.Consumes;
@@ -20,19 +21,19 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 public interface ApiClientCurrency {
 
     @GetMapping(value = "/historical/{yesterday}.json", params = {"app_id", "base", "symbols"})
-    @Consumes(APPLICATION_JSON)
-    @Produces(APPLICATION_JSON)
+    @Consumes("application/json")
+    @Produces("application/json")
     @Cacheable(cacheNames = "yesterday-cache")
     RateDtoWrapper getRateUSDbyCurrencyYesterday(@PathVariable(value = "yesterday") String yesterday,
-                                                                 @RequestParam(value = "app_id") String appId,
-                                                                 @RequestParam(value = "base") String base,
-                                                                 @RequestParam(value = "symbols") String symbols);
+                                                 @RequestParam(value = "app_id") String appId,
+                                                 @RequestParam(value = "base") String base,
+                                                 @RequestParam(value = "symbols") String symbols);
 
     @GetMapping(value = "/latest.json", params = {"app_id", "base", "symbols"})
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
     RateDtoWrapper getRateUSDbyCurrencyToday(@RequestParam(value = "app_id") String appId,
-                                                             @RequestParam(value = "base") String base,
-                                                             @RequestParam(value = "symbols") String symbols);
+                                             @RequestParam(value = "base") String base,
+                                             @RequestParam(value = "symbols") String symbols);
 }
 
