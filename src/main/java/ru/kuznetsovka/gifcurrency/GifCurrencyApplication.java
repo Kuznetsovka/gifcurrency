@@ -10,5 +10,4 @@ public class GifCurrencyApplication {
     public static void main(String[] args) {
         SpringApplication.run(GifCurrencyApplication.class, args);
     }
-
 }

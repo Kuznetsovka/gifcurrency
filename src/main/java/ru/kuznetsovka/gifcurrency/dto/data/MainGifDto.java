@@ -1,4 +1,4 @@
-package ru.kuznetsovka.gifcurrency;
+package ru.kuznetsovka.gifcurrency.dto.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

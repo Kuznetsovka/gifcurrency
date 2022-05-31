@@ -1,4 +1,4 @@
-package ru.kuznetsovka.gifcurrency.rate;
+package ru.kuznetsovka.gifcurrency.dto.rate;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;

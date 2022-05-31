@@ -1,4 +1,4 @@
-package ru.kuznetsovka.gifcurrency.rate;
+package ru.kuznetsovka.gifcurrency.dto.rate;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;

@@ -1,4 +1,4 @@
-package ru.kuznetsovka.gifcurrency.rate;
+package ru.kuznetsovka.gifcurrency.dto.rate;
 
 public enum Currency {
     AFN,

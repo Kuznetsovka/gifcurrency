@@ -3,6 +3,8 @@ server:
   hostname: localhost
 app:
   feign:
+    cache:
+      enabled=true:
     config:
       gif:
         name: apiGifs
@@ -18,4 +20,8 @@ app:
       default:
         connectTimeout: 5000
         readTimeout: 5000
-        loggerLevel: basic
+        loggerLevel: INFO
+logging:
+  level:
+    org.springframework.web: ERROR
+    ru.kuznetsovka.gifcurrency: INFO

@@ -1,11 +1,12 @@
-package ru.kuznetsovka.gifcurrency;
+package ru.kuznetsovka.gifcurrency.api;
 
 import feign.Response;
 import feign.codec.ErrorDecoder;
+import org.springframework.stereotype.Component;
 
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.NotFoundException;
-
+@Component
 public class CustomErrorDecoder implements ErrorDecoder {
     @Override
     public Exception decode(String methodKey, Response response) {
