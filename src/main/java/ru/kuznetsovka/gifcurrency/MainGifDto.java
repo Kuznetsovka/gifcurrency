@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class MainGifDto {
-    @JsonProperty(value= "date")
-    private DateDto dateDto;
+    @JsonProperty(value= "data")
+    private DataDto dateDto;
 }

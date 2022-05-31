@@ -32,7 +32,7 @@ public class MyServiceImpl implements MyService {
     public String difBetweenYesterdayAndTodayRate(String currency) {
         String yesterday = getYesterday();
         RateDto rateYesterday = getRateDtoByDay(currency, yesterday);
-        RateDto rateToday = apiClient.getRateUSDbyCurrencyToday(appId,base,currency).getRates().get(0);
+        RateDto rateToday = apiClient.getRateUSDbyCurrencyToday(appId,base,currency).getRates();
         return getUrlGifByDifRates(rateYesterday, rateToday);
 
     }
@@ -48,7 +48,7 @@ public class MyServiceImpl implements MyService {
     public RateDto getRateDtoByDay(String currency, String yesterdayStr) {
             return (yesterdayRate.get(currency) != null) ?
                     new RateDto(currency,yesterdayRate.get(currency)) :
-                    apiClient.getRateUSDbyCurrencyYesterday(yesterdayStr,appId,base, currency).getRates().get(0);
+                    apiClient.getRateUSDbyCurrencyYesterday(yesterdayStr,appId,base, currency).getRates();
 
     }
 

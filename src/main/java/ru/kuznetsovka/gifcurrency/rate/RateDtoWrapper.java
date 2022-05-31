@@ -11,5 +11,5 @@ import java.util.ArrayList;
 public class RateDtoWrapper {
     @JsonProperty("rates")
     @JsonDeserialize(using = RatesDeserializer.class)
-    private ArrayList<RateDto> rates;
+    private RateDto rates;
 }

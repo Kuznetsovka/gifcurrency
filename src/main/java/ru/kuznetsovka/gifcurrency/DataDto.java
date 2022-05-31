@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 @Getter
 @Setter
-public class DateDto {
+public class DataDto {
     @JsonProperty(value = "url")
     private String url;
 }

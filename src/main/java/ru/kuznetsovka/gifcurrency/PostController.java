@@ -18,8 +18,6 @@ public class PostController {
     @GetMapping(value = "/{currency}")
     public RedirectView getAllPosts(@PathVariable String currency) {
         String link = myService.difBetweenYesterdayAndTodayRate(currency);
-//        attributes.addFlashAttribute("flashAttribute", "redirectWithRedirectView");
-//        attributes.addAttribute("attribute", "redirectWithRedirectView");
-        return new RedirectView("redirectedUrl");
+        return new RedirectView(link);
     }
 }

@@ -6,17 +6,15 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static java.util.Objects.isNull;
 
 public class RatesDeserializer
-        extends JsonDeserializer<List<RateDto>> {
+        extends JsonDeserializer<RateDto> {
 
     @Override
-    public List<RateDto> deserialize(JsonParser p, DeserializationContext context) throws IOException {
-        List<RateDto> rates = new ArrayList<>();
+    public RateDto deserialize(JsonParser p, DeserializationContext context) throws IOException {
+        RateDto rate = null;
         while (true) {
             String code = p.nextFieldName();
             if (isNull(code)) {
@@ -24,10 +22,9 @@ public class RatesDeserializer
             }
             JsonToken token = p.nextValue();
             if (token.isNumeric()) {
-                RateDto rate = new RateDto(code, p.getDoubleValue());
-                rates.add(rate);
+                rate = new RateDto(code, p.getDoubleValue());
             }
         }
-        return rates;
+        return rate;
     }
 }
