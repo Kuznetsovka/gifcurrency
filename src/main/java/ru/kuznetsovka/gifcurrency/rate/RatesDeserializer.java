@@ -24,9 +24,7 @@ public class RatesDeserializer
             }
             JsonToken token = p.nextValue();
             if (token.isNumeric()) {
-                RateDto rate = new RateDto();
-                rate.setCode(code);
-                rate.setRate(p.getDoubleValue());
+                RateDto rate = new RateDto(code, p.getDoubleValue());
                 rates.add(rate);
             }
         }

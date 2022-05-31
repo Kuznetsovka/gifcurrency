@@ -6,9 +6,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-public class GifcurrencyApplication {
+public class GifCurrencyApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(GifcurrencyApplication.class, args);
+		SpringApplication.run(GifCurrencyApplication.class, args);
 	}
 
 }

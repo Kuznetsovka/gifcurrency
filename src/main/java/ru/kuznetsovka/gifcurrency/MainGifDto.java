@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class Date {
-    @JsonProperty
-    private String url;
+public class MainGifDto {
+    @JsonProperty(value= "date")
+    private DateDto dateDto;
 }
