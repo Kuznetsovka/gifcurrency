@@ -10,5 +10,5 @@ import lombok.Setter;
 public class RateDtoWrapper {
     @JsonProperty("rates")
     @JsonDeserialize(using = RatesDeserializer.class)
-    private RateDto rates;
+    private RateDto rate;
 }

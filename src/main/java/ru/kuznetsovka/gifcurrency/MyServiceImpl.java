@@ -32,7 +32,7 @@ public class MyServiceImpl implements MyService {
     public String difBetweenYesterdayAndTodayRate(String currency) {
         String yesterday = getYesterday();
         RateDto rateYesterday = getRateDtoByDay(currency, yesterday);
-        RateDto rateToday = apiClient.getRateUSDbyCurrencyToday(appId, base, currency).getRates();
+        RateDto rateToday = apiClient.getRateUSDbyCurrencyToday(appId, base, currency).getRate();
         return getUrlGifByDifRates(rateYesterday, rateToday);
     }
 
@@ -47,7 +47,7 @@ public class MyServiceImpl implements MyService {
     public RateDto getRateDtoByDay(String currency, String yesterdayStr) {
         return (yesterdayRate.get(currency) != null) ?
                 new RateDto(currency, yesterdayRate.get(currency)) :
-                apiClient.getRateUSDbyCurrencyYesterday(yesterdayStr, appId, base, currency).getRates();
+                apiClient.getRateUSDbyCurrencyYesterday(yesterdayStr, appId, base, currency).getRate();
     }
 
     // Можно было бы убрать в статический класс, но пока такой метод 1 нет смысла

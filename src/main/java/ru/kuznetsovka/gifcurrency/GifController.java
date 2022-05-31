@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.net.URI;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/api/v1/")
 public class GifController {
     @Autowired
     private MyService myService;
@@ -21,4 +21,5 @@ public class GifController {
         String link = myService.difBetweenYesterdayAndTodayRate(currency);
         return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(link)).build();
     }
+
 }
