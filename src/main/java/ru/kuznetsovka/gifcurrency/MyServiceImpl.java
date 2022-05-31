@@ -32,24 +32,22 @@ public class MyServiceImpl implements MyService {
     public String difBetweenYesterdayAndTodayRate(String currency) {
         String yesterday = getYesterday();
         RateDto rateYesterday = getRateDtoByDay(currency, yesterday);
-        RateDto rateToday = apiClient.getRateUSDbyCurrencyToday(appId,base,currency).getRates();
+        RateDto rateToday = apiClient.getRateUSDbyCurrencyToday(appId, base, currency).getRates();
         return getUrlGifByDifRates(rateYesterday, rateToday);
-
     }
+
     @Override
     public String getUrlGifByDifRates(RateDto rateYesterday, RateDto rateToday) {
         return (rateYesterday.compareTo(rateToday) <= 0) ?
-                apiGifClient.getGifRandom(apiKey,tagRich).getDateDto().getUrl():
-                apiGifClient.getGifRandom(apiKey,tagBroke).getDateDto().getUrl();
-
+                apiGifClient.getGifRandom(apiKey, tagRich).getDateDto().getUrl() :
+                apiGifClient.getGifRandom(apiKey, tagBroke).getDateDto().getUrl();
     }
 
     @Override
     public RateDto getRateDtoByDay(String currency, String yesterdayStr) {
-            return (yesterdayRate.get(currency) != null) ?
-                    new RateDto(currency,yesterdayRate.get(currency)) :
-                    apiClient.getRateUSDbyCurrencyYesterday(yesterdayStr,appId,base, currency).getRates();
-
+        return (yesterdayRate.get(currency) != null) ?
+                new RateDto(currency, yesterdayRate.get(currency)) :
+                apiClient.getRateUSDbyCurrencyYesterday(yesterdayStr, appId, base, currency).getRates();
     }
 
     // Можно было бы убрать в статический класс, но пока такой метод 1 нет смысла

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
 @Getter
 @Setter
 public class RateDtoWrapper {

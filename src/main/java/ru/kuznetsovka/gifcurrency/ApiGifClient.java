@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(value = "${app.feign.config.gif.name}", url = "${app.feign.config.gif.url}", fallback = MainGifDto.class)
 public interface ApiGifClient {
-    @GetMapping(consumes = "application/json", produces = "application/json",  params = {"api_key", "tag"})
+    @GetMapping(consumes = "application/json", produces = "application/json", params = {"api_key", "tag"})
     MainGifDto getGifRandom(@RequestParam(value = "api_key") String apiKey,
-                        @RequestParam(value = "tag") String tag);
+                            @RequestParam(value = "tag") String tag);
 }
