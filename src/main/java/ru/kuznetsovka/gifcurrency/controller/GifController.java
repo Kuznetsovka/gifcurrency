@@ -22,7 +22,7 @@ public class GifController {
 
     @GetMapping(value = "/check/{currency}")
     public ResponseEntity<Void> getGif(@PathVariable (required = false) String currency) {
-        log.info("Get request /{currency}");
+        log.info("Get request /check/{currency}");
         String link = myService.difBetweenYesterdayAndTodayRate(currency);
         log.info("Get response with gif");
         return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(link)).build();
@@ -30,13 +30,13 @@ public class GifController {
 
     @GetMapping(value = "/check/{currency}/today", produces = "application/json")
     public RateDto getJsonRateToday(@PathVariable String currency) {
-        log.info("Get request /{currency}/today");
+        log.info("Get request /check/{currency}/today");
         return myService.getRateUSDbyCurrencyToday(currency).getRate();
     }
 
     @GetMapping(value = "/check/{currency}/yesterday", produces = "application/json")
     public RateDto getJsonRateYesterday(@PathVariable String currency) {
-        log.info("Get request /{currency}/yesterday");
+        log.info("Get request /check/{currency}/yesterday");
         return myService.getRateUSDbyCurrencyYesterday(currency);
     }
 }
