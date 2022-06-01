@@ -4,7 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import ru.kuznetsovka.gifcurrency.controller.ApiClientCurrency;
+import ru.kuznetsovka.gifcurrency.controller.ApiCurrencyClient;
 import ru.kuznetsovka.gifcurrency.controller.ApiGifClient;
 import ru.kuznetsovka.gifcurrency.dto.rate.RateDto;
 import ru.kuznetsovka.gifcurrency.dto.rate.RateDtoWrapper;
@@ -18,7 +18,7 @@ import static ru.kuznetsovka.gifcurrency.Utils.getYesterday;
 @Log4j2
 public class MyServiceImpl implements MyService {
     @Autowired
-    private ApiClientCurrency apiClient;
+    private ApiCurrencyClient apiClient;
     @Autowired
     private ApiGifClient apiGifClient;
     @Value("${app.feign.config.currency.app_id}")

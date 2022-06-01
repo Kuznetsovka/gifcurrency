@@ -16,22 +16,22 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
         value = "${app.feign.config.currency.name}",
         url = "${app.feign.config.currency.url}",
         fallback = RateDtoWrapper.class)
-public interface ApiClientCurrency {
+public interface ApiCurrencyClient {
 
     @GetMapping(value = "/historical/{yesterday}.json", params = {"app_id", "base", "symbols"})
-    @Consumes("application/json")
-    @Produces("application/json")
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
     @Cacheable(cacheNames = "yesterday-cache")
     RateDtoWrapper getRateUSDbyCurrencyYesterday(@PathVariable(value = "yesterday") String yesterday,
                                                  @RequestParam(value = "app_id") String appId,
                                                  @RequestParam(value = "base") String base,
-                                                 @RequestParam(value = "symbols") String symbols);
+                                                 @RequestParam(value = "symbols") String currency);
 
     @GetMapping(value = "/latest.json", params = {"app_id", "base", "symbols"})
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
     RateDtoWrapper getRateUSDbyCurrencyToday(@RequestParam(value = "app_id") String appId,
                                              @RequestParam(value = "base") String base,
-                                             @RequestParam(value = "symbols") String symbols);
+                                             @RequestParam(value = "symbols") String currency);
 }
 
