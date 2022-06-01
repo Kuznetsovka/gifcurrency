@@ -20,9 +20,9 @@
 * [REST API курсов валют](https://docs.openexchangerates.org/)
 ## Список доступных end-point API
 
-Вчерашний курс {заданной валюты} по отношению к USD. - http://localhost:8080/api/v1/check/{валюта}/yesterday
-Текущий курс {заданной валюты} по отношению к USD. - http://localhost:8080/api/v1/check/{валюта}/today
-Получение gif - http://localhost:8080/api/v1/check/{валюта}
+* Вчерашний курс {заданной валюты} по отношению к USD. - http://localhost:8080/api/v1/check/{валюта}/yesterday
+* Текущий курс {заданной валюты} по отношению к USD. - http://localhost:8080/api/v1/check/{валюта}/today
+* Получение gif - http://localhost:8080/api/v1/check/{валюта}
 
 ## Ссылка на документацию
 
