@@ -1,45 +1,45 @@
-//package ru.kuznetsovka.gifcurrency.config;
-//
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.http.HttpMethod;
-//import org.springframework.http.MediaType;
-//import org.springframework.http.ResponseEntity;
-//import springfox.documentation.builders.PathSelectors;
-//import springfox.documentation.builders.RequestHandlerSelectors;
-//import springfox.documentation.builders.ResponseBuilder;
-//import springfox.documentation.spi.DocumentationType;
-//import springfox.documentation.spring.web.plugins.Docket;
-//
-//import java.time.LocalDate;
-//
-//import static java.util.Collections.singletonList;
-//
-//@Configuration
-//public class SpringFoxConfig {
-//    @Bean
-//    public Docket petApi() {
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .select()
-//                .apis(RequestHandlerSelectors.basePackage("ru.kuznetsovka.gifcurrency"))
-//                .paths(PathSelectors.any())
-//                .build()
-//                .pathMapping("/api/v1")
-//                .directModelSubstitute(LocalDate.class, String.class)
-//                .genericModelSubstitutes(ResponseEntity.class)
-//                .useDefaultResponseMessages(false)
-//                .globalResponses(HttpMethod.GET,
-//                        singletonList(new ResponseBuilder()
-//                                .code("500")
-//                                .description("500 message")
-//                                .representation(MediaType.TEXT_XML)
-//                                .apply(r ->
-//                                        r.model(m ->
-//                                                m.referenceModel(ref ->
-//                                                        ref.key(k ->
-//                                                                k.qualifiedModelName(q ->
-//                                                                        q.namespace("some:namespace")
-//                                                                                .name("ERROR"))))))
-//                                .build()));
-//    }
-//}
+package ru.kuznetsovka.gifcurrency.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@Configuration
+@EnableSwagger2
+public class SpringFoxConfig extends WebMvcConfigurationSupport {
+    @Bean
+    public Docket getApi () {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(metaData());
+    }
+    private ApiInfo metaData() {
+        return new ApiInfoBuilder()
+                .title("Spring Boot REST API")
+                .description("Spring Boot REST API for Test task")
+                .version("1.0.0")
+                .license("Apache License Version 2.0")
+                .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0\"")
+                .contact(new Contact("Kuznetsov Kirill", "https://github.com/Kuznetsovka", "kuznechik.86@mail.ru"))
+                .build();
+    }
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
+}

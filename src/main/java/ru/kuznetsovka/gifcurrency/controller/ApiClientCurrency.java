@@ -1,11 +1,10 @@
-package ru.kuznetsovka.gifcurrency.api;
+package ru.kuznetsovka.gifcurrency.controller;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.kuznetsovka.gifcurrency.config.ClientConfiguration;
 import ru.kuznetsovka.gifcurrency.dto.rate.RateDtoWrapper;
 
 import javax.ws.rs.Consumes;
@@ -15,7 +14,6 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @FeignClient(
         value = "${app.feign.config.currency.name}",
-        configuration = ClientConfiguration.class,
         url = "${app.feign.config.currency.url}",
         fallback = RateDtoWrapper.class)
 public interface ApiClientCurrency {

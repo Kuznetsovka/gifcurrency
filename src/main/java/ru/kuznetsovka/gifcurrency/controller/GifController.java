@@ -1,4 +1,4 @@
-package ru.kuznetsovka.gifcurrency;
+package ru.kuznetsovka.gifcurrency.controller;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,21 +20,21 @@ public class GifController {
     @Autowired
     private MyService myService;
 
-    @GetMapping(value = "/{currency}")
-    public ResponseEntity<Void> getGif(@PathVariable String currency) {
+    @GetMapping(value = "/check/{currency}")
+    public ResponseEntity<Void> getGif(@PathVariable (required = false) String currency) {
         log.info("Get request /{currency}");
         String link = myService.difBetweenYesterdayAndTodayRate(currency);
         log.info("Get response with gif");
         return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(link)).build();
     }
 
-    @GetMapping(value = "/{currency}/today", produces = "application/json")
+    @GetMapping(value = "/check/{currency}/today", produces = "application/json")
     public RateDto getJsonRateToday(@PathVariable String currency) {
         log.info("Get request /{currency}/today");
         return myService.getRateUSDbyCurrencyToday(currency).getRate();
     }
 
-    @GetMapping(value = "/{currency}/yesterday", produces = "application/json")
+    @GetMapping(value = "/check/{currency}/yesterday", produces = "application/json")
     public RateDto getJsonRateYesterday(@PathVariable String currency) {
         log.info("Get request /{currency}/yesterday");
         return myService.getRateUSDbyCurrencyYesterday(currency);
