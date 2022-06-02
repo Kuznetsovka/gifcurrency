@@ -17,7 +17,14 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
         url = "${app.feign.config.currency.url}",
         fallback = RateDtoWrapper.class)
 public interface ApiCurrencyClient {
-
+    /**
+     * Method requests to the external API service to get json Rate yesterday
+     * @param yesterday
+     * @param appId
+     * @param base
+     * @param currency
+     * @return RateDtoWrapper
+     */
     @GetMapping(value = "/historical/{yesterday}.json", params = {"app_id", "base", "symbols"})
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
@@ -26,7 +33,13 @@ public interface ApiCurrencyClient {
                                                  @RequestParam(value = "app_id") String appId,
                                                  @RequestParam(value = "base") String base,
                                                  @RequestParam(value = "symbols") String currency);
-
+    /**
+     * Method requests to the external API service to get json Rate today
+     * @param appId
+     * @param base
+     * @param currency
+     * @return RateDtoWrapper
+     */
     @GetMapping(value = "/latest.json", params = {"app_id", "base", "symbols"})
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)

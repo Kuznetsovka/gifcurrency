@@ -15,6 +15,12 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
         url = "${app.feign.config.gif.url}",
         fallback = MainGifDto.class)
 public interface ApiGifClient {
+    /**
+     * Method requests to the external API service
+     * @param apiKey
+     * @param tag
+     * @return MainGifDto
+     */
     @GetMapping(params = {"api_key", "tag"})
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)

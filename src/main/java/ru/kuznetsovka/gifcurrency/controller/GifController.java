@@ -17,6 +17,10 @@ public class GifController {
     @Autowired
     private MyService myService;
 
+    /**
+     *  Method for get gif according rate by currency to USD
+     * @param currency
+     */
     @GetMapping(value = "/check/{currency}")
     public ResponseEntity<Void> getGif(@PathVariable (required = false) String currency) {
         log.info("Get request /check/{currency}");
@@ -25,12 +29,22 @@ public class GifController {
         return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(link)).build();
     }
 
+    /**
+     * Method for get json with rate by currency to USD today
+     * @param currency
+     * @return RateDto
+     */
     @GetMapping(value = "/check/{currency}/today", produces = "application/json")
     public RateDto getJsonRateToday(@PathVariable String currency) {
         log.info("Get request /check/{currency}/today");
         return myService.getRateUSDbyCurrencyToday(currency).getRate();
     }
 
+    /**
+     * Method for get json with rate by currency to USD yesterday
+     * @param currency
+     * @return RateDto
+     */
     @GetMapping(value = "/check/{currency}/yesterday", produces = "application/json")
     public RateDto getJsonRateYesterday(@PathVariable String currency) {
         log.info("Get request /check/{currency}/yesterday");
