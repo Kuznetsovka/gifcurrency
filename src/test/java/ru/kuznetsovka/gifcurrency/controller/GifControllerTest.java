@@ -1,13 +1,11 @@
 package ru.kuznetsovka.gifcurrency.controller;
 
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootTest
 @EnableWebMvc
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 class GifControllerTest {
 //    @Autowired
 //    MockMvc mockMvc;
