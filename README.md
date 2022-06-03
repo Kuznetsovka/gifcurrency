@@ -30,4 +30,5 @@
 
 ## Ссылка на Docker контейнер
 
-docker pull kuznetsovka/dockerhub:gifcurrencypush
+* docker pull kuznetsovka/dockerhub:gifcurrencypush
+* docker run -d -p 8080:8080 -t dockerhub:gifcurrencypush
