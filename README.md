@@ -27,3 +27,7 @@
 ## Ссылка на документацию
 Документация отобразится, когда Сервис запущен
 * [Documents](http://localhost:8080/v2/api-docs)
+
+## Ссылка на Docker контейнер
+
+docker pull kuznetsovka/dockerhub:gifcurrencypush
